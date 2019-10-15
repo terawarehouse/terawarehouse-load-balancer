@@ -1,6 +1,6 @@
 spring:
   application:
-    name: terawarehouse-load-balancer
+    name: load-balancer
 server:
   port: 8762
 eureka:
@@ -9,12 +9,21 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:      service-url:
-      defaultZone: http://192.168.1.6:8761/eureka,http://192.168.1.7:8761/eureka
+    service-url:
+      defaultZone: http://192.168.1.100:8761/eureka
 management:
   endpoints:
     web:
       exposure:
         include:
-        - /*
+        - '*'
       base-path: /
+zuul:
+  sensitive-headers: # default value is Cookie, Set-Cookie, Authorization
+  add-proxy-headers: false
+  retryable: true
+  #prefix: /api
+  routes:
+    catalog: 
+      path: /catalog/**
+      service-id: catalog
