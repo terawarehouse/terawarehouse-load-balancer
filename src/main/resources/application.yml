@@ -19,11 +19,16 @@ management:
         - '*'
       base-path: /
 zuul:
+  ignored-services: '*'
   sensitive-headers: # default value is Cookie, Set-Cookie, Authorization
-  add-proxy-headers: false
+  add-proxy-headers: true
   retryable: true
-  #prefix: /api
+  prefix: /api
+  strip-prefix: true
   routes:
     catalog: 
       path: /catalog/**
       service-id: catalog
+    inventory:
+      path: /inventory/**
+      service-id: inventory
