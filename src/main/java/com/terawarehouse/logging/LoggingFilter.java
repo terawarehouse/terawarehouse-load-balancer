@@ -45,8 +45,8 @@ public class LoggingFilter extends ZuulFilter {
     public Object run() {
 
         HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-        logger.info("date={}, clientIP={}, requestUri={}, userAgent={}, user={}", new Date(), request.getRemoteAddr(), request.getUserPrincipal(), request.getHeader("User-Agent"),
-                request.getRequestURI());
+        logger.info("date={}, clientIP={}, requestUri={}, userAgent={}, user={}", new Date(), request.getRemoteAddr(), request.getRequestURI(), request.getHeader("User-Agent"),
+                request.getUserPrincipal());
 
         return null;
     }
