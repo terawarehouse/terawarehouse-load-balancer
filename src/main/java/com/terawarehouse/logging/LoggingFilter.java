@@ -17,6 +17,8 @@
  */
 package com.terawarehouse.logging;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -43,7 +45,8 @@ public class LoggingFilter extends ZuulFilter {
     public Object run() {
 
         HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-        logger.info("request={}, user={}, requestUri={}", request, request.getUserPrincipal(), request.getRequestURI());
+        logger.info("date={}, clientIP={}, requestUri={}, userAgent={}, user={}", new Date(), request.getRemoteAddr(), request.getUserPrincipal(), request.getHeader("User-Agent"),
+                request.getRequestURI());
 
         return null;
     }
