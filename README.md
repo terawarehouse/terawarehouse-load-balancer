@@ -10,6 +10,15 @@ Is a microservice that is a part of the Catalog and Sellout Management System.
  - It uses Zuul to load balance the requests to the API Composer.
  - It is powered by and use Spring Cloud to fetch the configuration from a remote server and join a client server registration.
 
+## Dockerized
+
+```
+docker build -t czetsuya/terawarehouse-load-balancer .
+docker run -d -p 8761:8761 czetsuya/terawarehouse-load-balancer
+```
+
+Load balancer should be accessible at http://localhost:8762
+
 ## Repositories
 
  - https://github.com/terawarehouse
